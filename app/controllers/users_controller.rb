@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new
 		@user.name = params[:name]
+		@user.picture = "https://robohash.org/#{@user.name}"
 		@user.password = params[:password]
 		if @user.save
 			flash[:success] = "Successfully create #{@user.name}. Please Log in using name and password"

@@ -5,123 +5,119 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" href="assets/base.css">
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="assets/1.js"></script>
+    <script src="assets/2.min.js"></script>
   </head>
+  <style>
+      #profile_pic {
+        width: 60px;
+        height: 50px;
+        border: 2px solid white;
+        border-radius: 50%
+      }
+  </style>
   <body id="top" style="background-color: black">
-    <section class="s-pageheader s-pageheader--home">
-      <header class="header">
-          <div class="header__content row">
-              <div class="header__logo">
-                  <a class="logo" href="<%= root_path %>">
-                    <i class="fa fa-smile-o" style="color: white; font-size: 5rem" aria-hidden="true"></i>
-                  </a>
-              </div> <!-- end header__logo -->
-              <ul class="header__social">
-                  <li>
-                      <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                  </li>
-                  <li>
-                      <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                  </li>
-                  <li>
-                      <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                  </li>
-                  <li>
-                      <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                  </li>
-              </ul> <!-- end header__social -->
-              <a class="header__search-trigger" href="#0"></a>
+    <div class="s-pageheader">
 
-              <div class="header__search">
+        <header class="header">
+            <div class="header__content row">
 
-                  <form role="search" method="get" class="header__search-form" action="#">
-                      <label>
-                          <span class="hide-content">Search for:</span>
-                          <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
-                      </label>
-                      <input type="submit" class="search-submit" value="Search">
-                  </form>
-                  <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
-              </div>  <!-- end header__search -->
-              <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
-              <nav class="header__nav-wrap">
-                  <h2 class="header__nav-heading h6">Site Navigation</h2>
-                  <ul class="header__nav">
-                      <li class="has-children">
-                          <a href="#0" title="">Topics</a>
-                          <ul class="sub-menu">
-                          <li><a href="single-video.html">Education</a></li>
-                          <li><a href="single-audio.html">Technology</a></li>
-                          <li><a href="single-gallery.html">Media</a></li>
-                          <li><a href="single-standard.html">Free</a></li>
-                          </ul>
-                      </li>
-                      <li class="current"><a href="index.html" title="">Home</a></li>
-                      <li><a href="contact.html" title="">Login / Register</a></li>
-                  </ul> <!-- end header__nav -->
+                <div class="header__logo">
+                    <a class="logo" href="index.html">
+                        <% if current_user == nil %>
+                            <i class="fa fa-smile-o" style="color: white; font-size: 5rem" aria-hidden="true"></i>
+                        <% else %>
+                            <img id="profile_pic" src="<%= current_user.picture %>" alt="Profile Picture">
+                            <h6 style="margin-top: 0;margin-bottom: 0;color: white">Welcome <%= current_user.name %></h6>
+                        <% end %>
+                        <!-- <img src="assets/logo.svg" alt="Homepage"> -->
+                    </a>
+                </div> <!-- end header__logo -->
 
-                  <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+                <ul class="header__social">
+                    <li>
+                        <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    </li>
+                </ul> <!-- end header__social -->
 
-              </nav> <!-- end header__nav-wrap -->
+                <a class="header__search-trigger" href="#0"></a>
 
-          </div> <!-- header-content -->
-          <div class="pageheader-content row">
-              <div class="col-full">
-                  <div class="featured">
-                      <div class="featured__column featured__column--big">
-                          <div class="entry" style="background-image:url('assets/thumbs/featured/featured-guitarman.jpg');">
-                              <div class="entry__content">
-                                  <span class="entry__category"><a href="#0">Music</a></span>
-                                  <h1><a href="#0" title="">What Your Music Preference Says About You and Your Personality.</a></h1>
-                                  <div class="entry__info">
-                                      <a href="#0" class="entry__profile-pic">
-                                          <img class="avatar" src="assets/avatars/user-03.jpg" alt="">
-                                      </a>
-                                      <ul class="entry__meta">
-                                          <li><a href="#0">John Doe</a></li>
-                                          <li>December 29, 2017</li>
-                                      </ul>
-                                  </div>
-                              </div> <!-- end entry__content -->
-                          </div> <!-- end entry -->
-                      </div> <!-- end featured__big -->
-                      <div class="featured__column featured__column--small">
-                          <div class="entry" style="background-image:url('assets/thumbs/featured/featured-watch.jpg');">
-                              <div class="entry__content">
-                                  <span class="entry__category"><a href="#0">Management</a></span>
-                                  <h1><a href="#0" title="">The Pomodoro Technique Really Works.</a></h1>
-                                  <div class="entry__info">
-                                      <a href="#0" class="entry__profile-pic">
-                                          <img class="avatar" src="assets/avatars/user-03.jpg" alt="">
-                                      </a>
-                                      <ul class="entry__meta">
-                                          <li><a href="#0">John Doe</a></li>
-                                          <li>December 27, 2017</li>
-                                      </ul>
-                                  </div>
-                              </div> <!-- end entry__content -->
-                          </div> <!-- end entry -->
-                          <div class="entry" style="background-image:url('assets/thumbs/featured/featured-beetle.jpg');">
-                              <div class="entry__content">
-                                  <span class="entry__category"><a href="#0">LifeStyle</a></span>
-                                  <h1><a href="#0" title="">Throwback To The Good Old Days.</a></h1>
-                                  <div class="entry__info">
-                                      <a href="#0" class="entry__profile-pic">
-                                          <img class="avatar" src="assets/avatars/user-03.jpg" alt="">
-                                      </a>
-                                      <ul class="entry__meta">
-                                          <li><a href="#0">John Doe</a></li>
-                                          <li>December 21, 2017</li>
-                                      </ul>
-                                  </div>
-                              </div> <!-- end entry__content -->
-                          </div> <!-- end entry -->
-                      </div> <!-- end featured__small -->
-                  </div> <!-- end featured -->
-              </div> <!-- end col-full -->
-          </div> <!-- end pageheader-content row -->          
-      </header>
-    </section>
+                <div class="header__search">
+                    <%= form_with(url: '/search', class: 'header__search-form') do %>
+                    <!-- <form role="search" method="get" class="header__search-form" action="#"> -->
+                        <label>
+                            <span class="hide-content">Search for:</span>
+                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                        </label>
+                        <input type="submit" class="search-submit" value="Search">
+                    <!-- </form> -->
+                    <% end %>
+                    <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+                </div>  <!-- end header__search -->
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+                <% if current_user %>
+                    <nav class="header__nav-wrap" style="margin-top: 0">
+                        <ul class="header__nav">
+                            <li><a href="<%= root_path %>" title="">Home</a></li>
+                            <li class="has-children">
+                                <a href="#0" title="">Topics</a>
+                                <ul class="sub-menu">
+                                  <li><a href="category.html">School</a></li>
+                                  <li><a href="category.html">Technology</a></li>
+                                  <li><a href="category.html">Education</a></li>
+                                </ul>
+                            </li>
+                                <li class="has-children">
+                                    <a href="#0" title="">Profile</a>
+                                    <ul class="sub-menu">
+                                    <li><a href="<%= sign_in_path %>">Edit Profile</a></li>
+                                    <li><a href="<%= sign_out_path %>">Sign Out</a></li>
+                                    </ul>
+                                </li>
+                        </ul> <!-- end header__nav -->
+                        <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+                    </nav> <!-- end header__nav-wrap -->
+                <% else %>
+                    <nav class="header__nav-wrap">
+                        <ul class="header__nav">
+                            <li><a href="<%= root_path %>" title="">Home</a></li>
+                            <li class="has-children">
+                                <a href="#0" title="">Topics</a>
+                                <ul class="sub-menu">
+                                  <li><a href="category.html">School</a></li>
+                                  <li><a href="category.html">Technology</a></li>
+                                  <li><a href="category.html">Education</a></li>
+                                </ul>
+                            </li>
+                                <li class="has-children">
+                                    <a href="#0" title="">Login / Register</a>
+                                    <ul class="sub-menu">
+                                    <li><a href="<%= sign_in_path %>">Login</a></li>
+                                    <li><a href="<%= sign_out_path %>">Register</a></li>
+                                    </ul>
+                                </li>
+                        </ul> <!-- end header__nav -->
+                        <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+                    </nav> <!-- end header__nav-wrap -->
+                <% end %>
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+    </div> <!-- end s-pageheader -->
+
   <% if current_user %>
     <!-- <a href="<%= user_list_path(current_user.id) %>">All List</a>  -->
     <!-- <a class="glyphicon glyphicon-user" href="/sign_out">Sign Out</a> -->
@@ -131,6 +127,22 @@
     <!-- <a href="/auth/google_oauth2">Google</a> -->
   <% end %>
     <%= yield %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader">
+        <div class="line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    <script src="assets/3.min.js"></script>
+    <script src="assets/4.js"></script>
+    <script src="assets/5.js"></script>
   </body>
 </html>
