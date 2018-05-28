@@ -1,15 +1,19 @@
-<div>
-	<%= form_with(url: '/sign_in') do |form| %>
-		<div class="field">
-			<%= form.label :name %>
-			<%= form.text_field :name %>
+<section class="s-content s-content--narrow">
+    <div class="row" style="padding-left: 17%">
+		<div class="col-full s-content__main" style="width: 50%;margin: auto;">
+			<%= form_with(url: '/sign_in',id: 'cForm',name: 'cForm') do %>
+			<!-- <form name="cForm" id="cForm" method="post" action=""> -->
+			    <fieldset>
+			        <div class="form-field">
+			            <input name='name' type="text" id="cName" class="full-width" style="text-align: center;" placeholder="Your Name" required>
+			        </div>
+			        <div class="form-field">
+			            <input name='password' type="password" id="cEmail" class="full-width" style="text-align: center;" placeholder="Your Password" required>
+			        </div>
+			        <button type="submit" class="submit btn btn--primary full-width">Login</button>
+			    </fieldset>
+			<!-- </form> -->
+			<% end %>
 		</div>
-		<div class="field">
-			<%= form.label :password %>
-			<%= form.password_field :password %>
-		</div>
-		<div>
-			<%= form.submit "Sign In"%>
-		</div>
-	<% end %>
-</div>
+	</div>
+</section>

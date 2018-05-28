@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/sign_up' => 'users#create'
   get '/auth/:provider/callback' => 'users#google_callback'
   root 'lists#index'
-
+  get '/search' => 'lists#search'
   resources :users, only: [:index] do	
   	get '/list' => 'users#user_list'
   end 
