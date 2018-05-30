@@ -5,13 +5,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    
+    <!--<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
     <link rel="stylesheet" href="assets/base.css">
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="assets/1.js"></script>
     <script src="assets/2.min.js"></script>
+    
+    <link rel="stylesheet" href="../assets/base.css">
+    <link rel="stylesheet" href="../assets/vendor.css">
+    <link rel="stylesheet" href="../assets/main.css">
+    <script src="../assets/1.js"></script>
+    <script src="../assets/2.min.js"></script>
+    
+    <link rel="stylesheet" href="../../assets/base.css">
+    <link rel="stylesheet" href="../../assets/vendor.css">
+    <link rel="stylesheet" href="../../assets/main.css">
+    <script src="../../assets/1.js"></script>
+    <script src="../../assets/2.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   </head>
   <style>
       #profile_pic {
@@ -23,10 +36,8 @@
   </style>
   <body id="top" style="background-color: black">
     <div class="s-pageheader">
-
         <header class="header">
             <div class="header__content row">
-
                 <div class="header__logo">
                     <a class="logo" href="index.html">
                         <% if current_user == nil %>
@@ -35,22 +46,20 @@
                             <img id="profile_pic" src="<%= current_user.picture %>" alt="Profile Picture">
                             <h6 style="margin-top: 0;margin-bottom: 0;color: white">Welcome <%= current_user.name %></h6>
                         <% end %>
-                        <!-- <img src="assets/logo.svg" alt="Homepage"> -->
                     </a>
                 </div> <!-- end header__logo -->
-
                 <ul class="header__social">
                     <li>
-                        <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                     </li>
                     <li>
-                        <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="https://pinterest.com"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
                     </li>
                 </ul> <!-- end header__social -->
 
@@ -61,7 +70,7 @@
                     <!-- <form role="search" method="get" class="header__search-form" action="#"> -->
                         <label>
                             <span class="hide-content">Search for:</span>
-                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                            <input type="search" class="search-field" style="text-align: center;" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
                         </label>
                         <input type="submit" class="search-submit" value="Search">
                     <!-- </form> -->
@@ -74,17 +83,17 @@
                         <ul class="header__nav">
                             <li><a href="<%= root_path %>" title="">Home</a></li>
                             <li class="has-children">
-                                <a href="#0" title="">Topics</a>
+                                <a href="#0" title="">Idea</a>
                                 <ul class="sub-menu">
-                                  <li><a href="category.html">School</a></li>
-                                  <li><a href="category.html">Technology</a></li>
-                                  <li><a href="category.html">Education</a></li>
+                                  <li><a href="<%= user_list_path(current_user.id) %>">My Idea</a></li>
+                                  <li><a href="<%= new_list_path %>">New Idea</a></li>
+                                  <!-- <li><a href="category.html">Education</a></li> -->
                                 </ul>
                             </li>
                                 <li class="has-children">
                                     <a href="#0" title="">Profile</a>
                                     <ul class="sub-menu">
-                                    <li><a href="<%= sign_in_path %>">Edit Profile</a></li>
+                                    <!-- <li><a href="<%= sign_in_path %>">Edit Profile</a></li> -->
                                     <li><a href="<%= sign_out_path %>">Sign Out</a></li>
                                     </ul>
                                 </li>
@@ -118,18 +127,16 @@
         </header> <!-- header -->
     </div> <!-- end s-pageheader -->
 
-  <% if current_user %>
-    <!-- <a href="<%= user_list_path(current_user.id) %>">All List</a>  -->
-    <!-- <a class="glyphicon glyphicon-user" href="/sign_out">Sign Out</a> -->
-  <% else %>
-    <!-- <a class="glyphicon glyphicon-user" href="/sign_in">Sign Up</a> -->
-    <!-- <a href="/sign_up">Sign Up</a> -->
-    <!-- <a href="/auth/google_oauth2">Google</a> -->
-  <% end %>
+<div id="barba-wrapper">
+  <div class="barba-container">
     <%= yield %>
+  </div>
+</div>
+
+
     <!-- preloader
 ================================================== -->
-<div id="preloader">
+<!-- <div id="preloader">
     <div id="loader">
         <div class="line-scale">
             <div></div>
@@ -139,10 +146,76 @@
             <div></div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+
     <!-- <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
-    <script src="assets/3.min.js"></script>
+    <!-- <script src="assets/3.min.js"></script> -->
+    <script integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="assets/4.js"></script>
     <script src="assets/5.js"></script>
+    
+    <!-- <script src="../../assets/3.min.js"></script> -->
+    <script src="../../assets/4.js"></script>
+    <script src="../../assets/5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script>
+    <script>
+         $('document').ready(function(){
+            var transEffect = Barba.BaseTransition.extend({
+                start: function(){
+                  this.newContainerLoading.then(val => this.fadeInNewcontent($(this.newContainer)));
+                },
+                fadeInNewcontent: function(nc) {
+                  nc.hide();
+                  var _this = this;
+                  $(this.oldContainer).fadeOut(1000).promise().done(() => {
+                    nc.css('visibility','visible');
+                    nc.fadeIn(1000, function(){
+                      _this.done();
+                    })
+                  });
+                }
+            });
+            Barba.Pjax.getTransition = function() {
+              return transEffect;
+            }
+            Barba.Pjax.start();
+          });
+         function reload() {
+            $('document').ready(function(){
+            var transEffect = Barba.BaseTransition.extend({
+                start: function(){
+                  this.newContainerLoading.then(val => this.fadeInNewcontent($(this.newContainer)));
+                },
+                fadeInNewcontent: function(nc) {
+                  nc.hide();
+                  var _this = this;
+                  $(this.oldContainer).fadeOut(1000).promise().done(() => {
+                    nc.css('visibility','visible');
+                    nc.fadeIn(1000, function(){
+                      _this.done();
+                    })
+                  });
+                }
+            });
+            Barba.Pjax.getTransition = function() {
+              return transEffect;
+            }
+            Barba.Pjax.start();
+          });
+         }
+    </script>
+    <script>
+     function del(id) {
+        $.ajax({
+          url: "/destroy",
+          method: "GET",
+          data: {id: id}
+        }).done(function() {
+            reload();
+        });
+     }
+    </script>
   </body>
 </html>

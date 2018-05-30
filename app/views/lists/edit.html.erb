@@ -1,6 +1,29 @@
 <h1>Editing List</h1>
 
-<%= render 'form', list: @list %>
-
+<!-- <%= render 'form', list: @list %>  -->
+<section class="s-content s-content--narrow">
+	<div class="row" >
+		<h1 style="text-align: center;">New Idea</h1>
+		<hr style="width: 50%;margin: auto">
+		<div class="col-full s-content__main" style="margin: auto;">
+			<%= form_with(list: @list,model: @list,id: 'cForm',name: 'cForm') do |form| %>
+			    <fieldset>
+			        <div class="form-field">
+    					<%= form.text_field :title,id: "cName",class: 'full-width',style: 'text-align: center',placeholder: 'Your Name', value: @list.title %>
+			            <!-- <input name='title' type="text" id="cName" class="full-width" style="text-align: center;" placeholder="Your Name" value="<%= @list.title %>" required> -->
+			        </div>
+		            <div class="message form-field">
+                    	<!-- <textarea name="content" id="cMessage" class="full-width" style="text-align: center;" placeholder="Some Description About Your Idea"><%= @list.content %></textarea> -->
+    					<%= form.text_area :content,id: "cMessage",class: 'full-width',style: 'text-align: center',placeholder: 'Some Description About Your Idea', value: @list.content %>
+                    </div>
+			        <div class="form-field">
+    					<%= form.file_field :picture, multiple: true, class: 'full-width' %>
+			        </div>
+			        <button type="submit" class="submit btn btn--primary full-width">Update !</button>
+			    </fieldset>
+			<% end %>
+		</div>
+	</div>
+</section>
 <%= link_to 'Show', @list %> |
 <%= link_to 'Back', lists_path %>

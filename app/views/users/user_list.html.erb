@@ -1,6 +1,38 @@
-<div>
-	<% @list.each do |list|%>
-	<%= list.title %><br> 
-	<%= list.content %><br>
-	<% end %> 
-</div>
+<section class="s-content s-content--narrow">
+	<div class="row add-bottom">
+	    <div class="col-twelve">
+			<div class="table-responsive">
+			    <table>
+			            <thead>
+			            <tr>
+			                <th>Title</th>
+			                <th>Content</th>
+			                <th>Picture</th>
+			                <th>Actions</th>
+			            </tr>
+			            </thead>
+			            <tbody>
+						<% @list.each do |list|%>
+				            <tr>
+				                <td><%= list.title %></td>
+				                <td><%= list.content %></td>
+				                <td>
+				                	<% if list.picture == [] %>
+				                		Not Exist Yet
+				                	<% else %>
+				                		<% list.picture.each do |pic| %>
+				                			<img style="width: 100px;height: 50px" src="<%= pic.url %>">
+				                		<% end %>
+				                	<% end %>
+				                </td>
+				                <td>
+				                	<a href="<%= edit_list_path(list.id) %>">Edit</a> | <a href="/lists/<%= list.id %>/delete">Delete</a>
+				                </td>
+				            </tr>
+				        <% end %>
+			            </tbody>
+			    </table>
+			</div>
+		</div>
+	</div>
+</section>

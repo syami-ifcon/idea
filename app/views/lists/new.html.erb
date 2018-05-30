@@ -1,5 +1,23 @@
-<h1>New List</h1>
 
-<%= render 'form', list: @list %>
-
-<%= link_to 'Back', lists_path %>
+<section class="s-content s-content--narrow">
+    <div class="row" >
+<h1 style="text-align: center;">New Idea</h1>
+<hr style="width: 50%;margin: auto">
+		<div class="col-full s-content__main" style="margin: auto;">
+			<%= form_with(model: @list,id: 'cForm',name: 'cForm') do %>
+			    <fieldset>
+			        <div class="form-field">
+			            <input name='title' type="text" id="cName" class="full-width" style="text-align: center;" placeholder="Your Name" required>
+			        </div>
+		            <div class="message form-field">
+                    	<textarea name="content" id="cMessage" class="full-width" style="text-align: center;" placeholder="Some Description About Your Idea" ></textarea>
+                    </div>
+			        <div class="form-field">
+			            <input name='picture' type="file" id="cName" class="full-width" style="text-align: center;" required>
+			        </div>
+			        <button type="submit" class="submit btn btn--primary full-width">Register</button>
+			    </fieldset>
+			<% end %>
+		</div>
+	</div>
+</section>
