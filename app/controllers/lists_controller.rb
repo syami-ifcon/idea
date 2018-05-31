@@ -17,7 +17,6 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-
   end
 
   # GET /lists/new
@@ -43,13 +42,9 @@ class ListsController < ApplicationController
     if current_user
       @list = List.new(list_params)
       @list.user_id = current_user.id
-      respond_to do |format|
-        if @list.save
-          format.html { redirect_to @list, notice: 'List was successfully created.' }
-        else
-          format.html { render :new }
-        end
-      end
+      @list.save
+      # end
+      redirect_to root_path
     else
       redirect_to root_path
     end
@@ -108,11 +103,11 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+      @list = List.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:title, :content, {picture: []})
+      params.permit(:title, :content, {picture: []})
     end
 end

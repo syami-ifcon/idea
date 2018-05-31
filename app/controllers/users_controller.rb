@@ -26,23 +26,15 @@ class UsersController < ApplicationController
 			redirect_to root_path
 		else
 			flash[:danger] = "Please Change Your Name"
-			return redirect_to :back
+			return redirect_to sign_up_path 
 		end
 		# redirect_to root_path
 	end
 
 	def sign_out
-		# @user = User.find(current_user.id)
-		cookies.delete :uid
-		# respond_to do |format|
-	 #        format.html
-	 #    end
+	 cookies.delete :uid
+	 flash[:danger] = "Please Refresh the page"
 	 return redirect_to root_path
-	 #    respond_to do |format|
-		#   format.js {render inline: "location.reload();" }
-		# end
-
-		# redirect_to root_path
 	end
 
 	# def redirect

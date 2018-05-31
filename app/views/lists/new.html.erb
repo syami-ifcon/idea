@@ -4,7 +4,7 @@
 <h1 style="text-align: center;">New Idea</h1>
 <hr style="width: 50%;margin: auto">
 		<div class="col-full s-content__main" style="margin: auto;">
-			<%= form_with(model: @list,id: 'cForm',name: 'cForm') do %>
+			<%= form_with(model: @list,id: 'cForm',name: 'cForm',multipart: true) do %>
 			    <fieldset>
 			        <div class="form-field">
 			            <input name='title' type="text" id="cName" class="full-width" style="text-align: center;" placeholder="Your Name" required>
@@ -13,7 +13,7 @@
                     	<textarea name="content" id="cMessage" class="full-width" style="text-align: center;" placeholder="Some Description About Your Idea" ></textarea>
                     </div>
 			        <div class="form-field">
-			            <input name='picture' type="file" id="cName" class="full-width" style="text-align: center;" required>
+			            <input name='picture' type="file" id="cName" class="full-width" style="text-align: center;" multiple="true" required>
 			        </div>
 			        <button type="submit" class="submit btn btn--primary full-width">Register</button>
 			    </fieldset>
