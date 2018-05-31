@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'capybara/rspec'
+# require 'capybara/rspec'
 
 y = User.create(name: "abc", password: '123')
 
