@@ -10,6 +10,11 @@ RSpec.describe List, :type => :model do
   	expect{x.valid? == false}
   end
 
+  it "title and content should if not fill" do
+    x = List.create(title: 'nil',content: 'nil',user_id: y.id)
+    expect{x.valid? == true}
+  end
+
   it "could not create without a user" do
   	x = List.create(title: "nil",content: "nil")
   	expect{x.valid? == false}
@@ -28,8 +33,18 @@ RSpec.describe User, :type => :model do
   	expect{x.valid? == false}
   end
 
-  it "name and password should be exists" do
-  	x = User.create(name: "abc", password: nil)
+  it "could not sign up with the without password" do
+    x = User.create(name: "abc", password: nil)
+    expect{x.valid? == false}
+  end
+
+  it "can sign up succesfully" do
+    x = User.create(name: "hahaha", password: 'nil')
+    expect{x.valid? == true}
+  end
+
+  it "name and password should be fill" do
+  	x = User.create(name: nil, password: nil)
   	expect{x.valid? == false}
   end
 
