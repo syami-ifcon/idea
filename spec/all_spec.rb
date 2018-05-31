@@ -32,6 +32,10 @@ RSpec.describe User, :type => :model do
   	x = User.create(name: "abc", password: nil)
   	expect{x.valid? == false}
   end
+
+  context 'assosiation' do
+  	it { is_expected.to have_many(:lists).dependent(:destroy)}
+  end
 end	
 
 # just make on and validate it
