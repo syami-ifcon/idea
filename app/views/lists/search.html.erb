@@ -1,22 +1,9 @@
-<!-- <div>
-  <% @lists.each do |list| %>
-    <% if list.picture %>
-      <% list.picture.each do |pic| %>
-        <img width="100" src="<%= pic.url %>">
-      <% end %>
-    <% end %>
-  <%= list.title %>
-  <%= list.content %>
-  <%= link_to 'Show', list %>
-  <% end %>
-</div> -->
 <section class="s-content">
     <div class="row masonry-wrap">
         <div class="masonry">
-
             <div class="grid-sizer"></div>
             <% @lists.each do |list| %>
-                <article id="list-<%= list.id %>" class="masonry__brick entry format-standard" data-aos="fade-up">
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
                     <div class="entry__thumb">
                         <a href="<%= list_path(list.id) %>" class="entry__thumb-link">
                             <% if list.picture == [] %>
@@ -40,24 +27,10 @@
                             <p>
                                <%= list.content %>
                             </p>
-                            <button onclick="del('<%= list.id %>')">Delete</button>
                         </div>
                     </div>
                 </article>
             <% end %>
         </div>
     </div>
-</section>
-<h2>hello world</h2>
-<!-- 
-<div id="preloader">
-    <div id="loader">
-        <div class="line-scale">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-</di -->
+</section> 

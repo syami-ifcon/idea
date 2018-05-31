@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :lists
+  resources :lists do
+    get '/delete' => 'lists#destroy_get'
+  end
 
+  get '/destroy' => 'lists#pure_ajax'
   get "/sign_up" => "users#sign_up"
   post '/sign_in' => 'users#authenticate'
   get "/sign_in" => "users#sign_in"
@@ -8,7 +11,7 @@ Rails.application.routes.draw do
   post '/sign_up' => 'users#create'
   get '/auth/:provider/callback' => 'users#google_callback'
   root 'lists#index'
-  get '/search' => 'lists#search'
+  post '/search' => 'lists#search'
   resources :users, only: [:index] do	
   	get '/list' => 'users#user_list'
   end 

@@ -7,9 +7,17 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def pure_ajax
+    @list = List.find_by(id: params[:id])
+    @list.destroy
+    respond_to do |format|
+        format.js
+    end
+  end
   # GET /lists/1
   # GET /lists/1.json
   def show
+
   end
 
   # GET /lists/new
@@ -23,7 +31,6 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
-
     if current_user.id == @list.user.id 
     else
       redirect_to root_path
@@ -39,10 +46,8 @@ class ListsController < ApplicationController
       respond_to do |format|
         if @list.save
           format.html { redirect_to @list, notice: 'List was successfully created.' }
-          format.json { render :show, status: :created, location: @list }
         else
           format.html { render :new }
-          format.json { render json: @list.errors, status: :unprocessable_entity }
         end
       end
     else
@@ -69,6 +74,18 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy_get
+    @list = List.find(params[:list_id])
+    if current_user.id == @list.user.id
+      @list.destroy
+      respond_to do |format|
+        format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path
+    end
+  end
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
@@ -84,7 +101,8 @@ class ListsController < ApplicationController
   end
 
   def search
-    @lists = List.where("title ALIKE ?", "%#{params[:search]}%")
+    @lists = List.where("title LIKE ?", "%#{params[:s]}%")
+    p @lists
   end
 
   private

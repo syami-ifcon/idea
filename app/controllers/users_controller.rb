@@ -4,14 +4,12 @@ class UsersController < ApplicationController
 
 	def authenticate
 		@user = User.find_by(name: params[:name],password: params[:password])
-		p params
 		if @user == nil
 			flash[:danger] = "Wrong Credential"
 			return redirect_back fallback_location: root_path
 		else
-			flash[:primary] = "Welcome #{@user.name}"
 			cookies[:uid] = @user.id
-			return redirect_to root_path
+			redirect_to root_path
 		end
 	end
 
@@ -34,14 +32,30 @@ class UsersController < ApplicationController
 	end
 
 	def sign_out
+		# @user = User.find(current_user.id)
 		cookies.delete :uid
-		redirect_to root_path
+		# respond_to do |format|
+	 #        format.html
+	 #    end
+	 return redirect_to root_path
+	 #    respond_to do |format|
+		#   format.js {render inline: "location.reload();" }
+		# end
+
+		# redirect_to root_path
 	end
+
+	# def redirect
+	# 	respond_to do |format|
+	#         format.js
+	#     end
+	# end
 
 	def google_callback
 		@user_info = request.env['omniauth.auth']
 		@user = User.new
 		@user.name = @user_info['info']['name']
+		@user.picture = "https://robohash.org/#{@user.name}"
 		@user.password = '123'
 		@user.save 
 	 # skandknk 

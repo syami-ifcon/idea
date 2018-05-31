@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -11,4 +11,42 @@
 </p>
 
 <%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<%= link_to 'Back', lists_path %> -->
+    <section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-standard">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    <%= @list.title %>
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date"><%= @list.updated_at %></li>
+                </ul>
+            </div> <!-- end s-content__header -->
+            <div class="s-content__media col-full">
+                <div class="s-content__post-thumb">
+                	 <% if @list.picture == [] %>
+	                	<img src="../assets/thumbs/single/standard/placeholder.png" 
+		                         srcset="../assets/thumbs/single/standard/placeholder.png 2000w, 
+		                                 ../assets/thumbs/single/standard/placeholder.png 1000w, 
+		                                 ../assets/thumbs/single/standard/placeholder.png 500w" 
+		                         sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+	                 <% else %>
+	                	<% @list.picture.each do |picture| %>
+		                    <img src="<%= picture.url %>" 
+		                         srcset="<%= picture.url %> 2000w, 
+		                                 <%= picture.url %> 1000w, 
+		                                 <%= picture.url %> 500w" 
+		                         sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+	                    <% end %>
+	                 <% end %>
+                </div>
+            </div> <!-- end s-content__media -->
+
+            <div class="col-full s-content__main">
+                <!-- p class="lead">Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint.</p> -->
+                <p><%= @list.content %></p>
+            </div>
+        </article>
+    </section>
