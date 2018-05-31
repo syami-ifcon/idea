@@ -37,9 +37,10 @@ class UsersController < ApplicationController
 		# respond_to do |format|
 	 #        format.html
 	 #    end
-	    respond_to do |format|
-		  format.js {render inline: "location.reload();" }
-		end
+	 return redirect_to root_path
+	 #    respond_to do |format|
+		#   format.js {render inline: "location.reload();" }
+		# end
 
 		# redirect_to root_path
 	end
