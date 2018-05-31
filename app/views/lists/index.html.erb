@@ -29,7 +29,11 @@
                             <p>
                                <%= list.content %>
                             </p>
-                            <button onclick="del('<%= list.id %>')">Delete</button>
+                            <% if current_user %>
+                                <% if current_user.id == list.user_id %>
+                                    <button onclick="del('<%= list.id %>')">Delete</button>
+                                <% end %>
+                            <% end %>
                         </div>
                     </div>
                 </article>
