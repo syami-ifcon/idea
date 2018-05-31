@@ -44,6 +44,7 @@ class UsersController < ApplicationController
 		@user.name = @user_info['info']['name']
 		@user.password = '123'
 		@user.save 
+	 # skandknk 
 		redirect_to root_path
 	end
 
