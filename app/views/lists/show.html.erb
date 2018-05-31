@@ -27,10 +27,10 @@
             <div class="s-content__media col-full">
                 <div class="s-content__post-thumb">
                 	 <% if @list.picture == [] %>
-	                	<img src="../assets/thumbs/single/standard/placeholder.png" 
-		                         srcset="../assets/thumbs/single/standard/placeholder.png 2000w, 
-		                                 ../assets/thumbs/single/standard/placeholder.png 1000w, 
-		                                 ../assets/thumbs/single/standard/placeholder.png 500w" 
+	                	<img src="images/thumbs/single/standard/placeholder.png" 
+		                         srcset="images/thumbs/single/standard/placeholder.png 2000w, 
+		                                 images/thumbs/single/standard/placeholder.png 1000w, 
+		                                 images/thumbs/single/standard/placeholder.png 500w" 
 		                         sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
 	                 <% else %>
 	                	<% @list.picture.each do |picture| %>
