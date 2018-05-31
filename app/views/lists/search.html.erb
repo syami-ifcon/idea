@@ -7,7 +7,7 @@
                     <div class="entry__thumb">
                         <a href="<%= list_path(list.id) %>" class="entry__thumb-link">
                             <% if list.picture == [] %>
-                                <img src="assets/thumbs/single/standard/placeholder.png" srcset="assets/thumbs/single/standard/placeholder.png 1x, assets/thumbs/single/standard/placeholder.png 2x" alt="">
+                                <img src="images/thumbs/single/standard/placeholder.png" srcset="images/thumbs/single/standard/placeholder.png 1x, images/thumbs/single/standard/placeholder.png 2x" alt="">
                             <% else %>
                                 <% list.picture.each do |pic|%>
                                     <img src="<%= pic.url %>">

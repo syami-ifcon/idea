@@ -45,12 +45,21 @@ class UsersController < ApplicationController
 
 	def google_callback
 		@user_info = request.env['omniauth.auth']
-		@user = User.new
-		@user.name = @user_info['info']['name']
-		@user.picture = "https://robohash.org/#{@user.name}"
-		@user.password = '123'
-		@user.save 
-	 # skandknk 
+		x = User.find_by(name: @user_info['info']['name'])
+		if x == nil
+			@user = User.new
+			@user.name = @user_info['info']['name']
+			@user.picture = "https://robohash.org/#{@user.name}"
+			@user.password = '123'
+			@user.save
+			cookies[:uid] = @user.id
+			# flash[:success] = "Please Login using #{@user.name} and password '123'"
+		else
+		    cookies.delete :uid
+			cookies[:uid] = x.id
+			# flash[:success] = "Please Login using #{@x.name} and password #{@x.password}"
+		end
+
 		redirect_to root_path
 	end
 
