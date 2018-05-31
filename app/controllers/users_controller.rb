@@ -58,6 +58,7 @@ class UsersController < ApplicationController
 		@user.picture = "https://robohash.org/#{@user.name}"
 		@user.password = '123'
 		@user.save 
+	 # skandknk 
 		redirect_to root_path
 	end
 
