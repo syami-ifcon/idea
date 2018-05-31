@@ -12,7 +12,7 @@ class ListsController < ApplicationController
     @list.destroy
     respond_to do |format|
         format.js
-      end
+    end
   end
   # GET /lists/1
   # GET /lists/1.json
@@ -46,10 +46,8 @@ class ListsController < ApplicationController
       respond_to do |format|
         if @list.save
           format.html { redirect_to @list, notice: 'List was successfully created.' }
-          format.json { render :show, status: :created, location: @list }
         else
           format.html { render :new }
-          format.json { render json: @list.errors, status: :unprocessable_entity }
         end
       end
     else
