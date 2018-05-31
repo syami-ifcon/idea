@@ -8,10 +8,20 @@ class ListsController < ApplicationController
   end
 
   def pure_ajax
-    @list = List.find_by(id: params[:id])
-    @list.destroy
-    respond_to do |format|
-        format.js
+    if current_user
+      if current_user.id == list.user_id
+        @list = List.find_by(id: params[:id])
+        @list.destroy
+        respond_to do |format|
+            format.js
+        end
+      else
+        flash[:x] = "Only the Creator Can Delete Its Idea"
+        return redirect_to root_path
+      end
+    else
+      flash[:x] = "You need To logged in to perform that action"
+      redirect_to root_path
     end
   end
   # GET /lists/1
