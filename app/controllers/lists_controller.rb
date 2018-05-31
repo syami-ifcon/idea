@@ -41,9 +41,9 @@ class ListsController < ApplicationController
   def create
     if current_user
       @list = List.new(list_params)
+      @list.picture = params[:list][:picture]
       @list.user_id = current_user.id
       @list.save
-      # end
       redirect_to root_path
     else
       redirect_to root_path
@@ -109,5 +109,5 @@ class ListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
       params.permit(:title, :content, {picture: []})
-    end
+      end
 end
