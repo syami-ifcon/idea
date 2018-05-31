@@ -20,7 +20,7 @@
                     <div class="entry__thumb">
                         <a href="<%= list_path(list.id) %>" class="entry__thumb-link">
                             <% if list.picture == [] %>
-                                <img src="assets/placeholder.png" srcset="assets/placeholder.png 1x, assets/placeholder.png 2x" alt="">
+                                <img src="images/thumbs/single/standard/placeholder.png" srcset="images/thumbs/single/standard/placeholder.png 1x, images/thumbs/single/standard/placeholder.png 2x" alt="">
                             <% else %>
                                 <% list.picture.each do |pic|%>
                                     <img src="<%= pic.url %>">
@@ -32,9 +32,9 @@
                         <div class="entry__header">
                             
                             <div class="entry__date">
-                                <a href="single-standard.html">December 15, 2017</a>
+                                <a href="<%= list_path(list.id)%>"><%= list.updated_at %></a>
                             </div>
-                            <h1 class="entry__title"><a href="single-standard.html"><%= list.title %></a></h1>
+                            <h1 class="entry__title"><a href="<%= list_path(list.id)%>"><%= list.title %></a></h1>
                         </div>
                         <div class="entry__excerpt">
                             <p>
